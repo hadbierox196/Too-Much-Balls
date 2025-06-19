@@ -2,7 +2,7 @@ import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
 import { GameLogic } from './gameLogic.js';
-import { PLAYER_RADIUS } from '#shared/constants.js';
+import { PLAYER_RADIUS } from '../shared/constants.js';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
