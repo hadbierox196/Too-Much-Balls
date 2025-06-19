@@ -18,6 +18,11 @@ body {
     justify-content: center;
     align-items: center;
 }
+#game-canvas { 
+  display: block; 
+  width: 100vw; 
+  height: 100vh; 
+}
 
 .lobby-container {
     text-align: center;
