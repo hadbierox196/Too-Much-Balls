@@ -50,3 +50,19 @@ h1 {
 .hidden {
     display: none;
 }
+.connected {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+#countdown {
+  font-size: 2rem;
+  margin-top: 2rem;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
