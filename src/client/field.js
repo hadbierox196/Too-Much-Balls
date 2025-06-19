@@ -1,44 +1,41 @@
 import * as THREE from 'three';
-import { 
-    FIELD_WIDTH, 
-    FIELD_HEIGHT,
-    GOAL_WIDTH,
-    GOAL_DEPTH
-} from '../shared/constants.js';
+import { FIELD_WIDTH, FIELD_HEIGHT } from '../shared/constants.js';
 
 export function createField(scene) {
     // Field surface
     const fieldGeometry = new THREE.PlaneGeometry(FIELD_WIDTH, FIELD_HEIGHT);
-    const fieldMaterial = new THREE.MeshPhongMaterial({ 
+    const fieldMaterial = new THREE.MeshStandardMaterial({ 
         color: 0x00aa00,
-        shininess: 30 
+        roughness: 0.8,
+        metalness: 0.2
     });
     const field = new THREE.Mesh(fieldGeometry, fieldMaterial);
     field.rotation.x = -Math.PI / 2;
     field.receiveShadow = true;
     scene.add(field);
-    
-    // Line markings
+
+    // White lines
     const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
     
     // Center circle
-    const centerCircle = new THREE.CircleGeometry(5, 32);
-    centerCircle.vertices.shift(); // Remove center point
-    const circle = new THREE.Line(centerCircle, lineMaterial);
+    const circleGeometry = new THREE.CircleGeometry(5, 32);
+    circleGeometry.vertices.shift(); // Remove center point
+    const circle = new THREE.Line(circleGeometry, lineMaterial);
     circle.rotation.x = -Math.PI / 2;
     scene.add(circle);
-    
-    // Goals
-    const goalGeometry = new THREE.BoxGeometry(GOAL_WIDTH, 2, GOAL_DEPTH);
-    const goalMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+
+    // Goals (MUST BE ADDED TO SCENE)
+    const goalGeometry = new THREE.BoxGeometry(10, 2, 2);
+    const goalMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
     
     const goal1 = new THREE.Mesh(goalGeometry, goalMaterial);
     goal1.position.set(0, 1, -FIELD_HEIGHT/2);
     scene.add(goal1);
-    
+
     const goal2 = new THREE.Mesh(goalGeometry, goalMaterial);
     goal2.position.set(0, 1, FIELD_HEIGHT/2);
     scene.add(goal2);
+}
     
     // Goal D areas
     const dAreaShape = new THREE.Shape();
