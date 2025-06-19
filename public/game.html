@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Too Much Balls</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #game-container { position: relative; width: 100vw; height: 100vh; }
+        canvas { display: block; }
+        #ui { position: absolute; bottom: 20px; width: 100%; }
+        .controls { display: flex; justify-content: space-around; }
+        .joystick-container { width: 120px; height: 120px; }
+        .action-btn { 
+            width: 80px; height: 80px; 
+            border-radius: 50%; 
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div id="ui">
+            <div class="controls">
+                <div class="joystick-container">
+                    <div id="joystick"></div>
+                </div>
+                <div class="action-buttons">
+                    <div id="sprint-btn" class="action-btn">SPRINT</div>
+                    <div id="shoot-btn" class="action-btn">SHOOT</div>
+                    <div id="pass-btn" class="action-btn">PASS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="../src/client/game.js"></script>
+</body>
+</html>
